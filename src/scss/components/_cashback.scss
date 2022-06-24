@@ -1,0 +1,145 @@
+.cashback {
+  color: currentColor;
+  background: inherit;
+
+  &__wrapper {
+    padding: 30px 15px;
+
+    @media (min-width: $breakpoint_md) {
+      padding: 30px 0;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      padding: 40px 0;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      padding: 50px 0;
+    }
+  }
+
+  &__body {
+    @media (min-width: $breakpoint_md) {
+      width: 460px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      width: 500px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      width: 580px;
+    }
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+
+    @media (min-width: $breakpoint_md) {
+      font-size: 30px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      font-size: 34px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      font-size: 40px;
+    }
+  }
+
+  &__copy {
+    margin-top: 10px;
+
+    @media (min-width: $breakpoint_md) {
+      font-size: 16px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      font-size: 18px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    &:first-of-type {
+      margin-top: 20px;
+
+      @media (min-width: $breakpoint_xl) {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    width: 100%;
+    min-height: 50px;
+    font-size: 16px;
+    border: 1px solid currentColor;
+    border-radius: 30px;
+    transition: all 0.3s;
+
+    &.dark {
+      @media (min-width: $breakpoint_lg) {
+        &::after {
+          background: #fff;
+        }
+
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    @media (min-width: $breakpoint_md) {
+      width: 250px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      position: relative;
+      overflow-x: hidden;
+
+      &::after {
+        content: '';
+        display: block;
+        background: #333;
+        border-radius: 30px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0.1;
+        transform: translateX(-110%);
+        transition: all 0.5s;
+      }
+
+      &:hover {
+        color: #fff;
+
+        &::after {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      margin-top: 30px;
+      width: 280px;
+      min-height: 60px;
+    }
+  }
+}

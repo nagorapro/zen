@@ -1,0 +1,28 @@
+body {
+  font-family: $font_family;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  fill: #000;
+  background: #fff;
+  padding-top: $heigth_header_xs;
+  transition: all 0.5s;
+
+  @media (min-width: $breakpoint_lg) {
+    padding-top: $heigth_header_lg;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.dark {
+    color: #fff;
+    fill: #fff;
+    background: #333;
+  }
+
+  &.hidden {
+    overflow-y: hidden;
+  }
+}

@@ -1,0 +1,201 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 15px;
+  color: #000;
+  fill: #fff;
+  background: transparent;
+  transition: all 0.2s;
+
+  &.active {
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 3;
+
+    div:first-of-type {
+      opacity: 1;
+      bottom: 50%;
+    }
+  }
+
+  &__body {
+    position: absolute;
+    left: 50%;
+    bottom: -100%;
+    z-index: 1;
+    width: 90%;
+    padding: 30px 25px;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translate(-50%, 50%);
+    transition: all 0.5s;
+
+    @media (min-width: $breakpoint_md) {
+      width: 400px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -34px;
+    right: 0;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  &__form {
+    margin-top: 20px;
+    position: relative;
+  }
+
+  &__field {
+    display: block;
+    margin-top: 15px;
+    height: 26px;
+    border-bottom: 1px solid #aaa;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &.error {
+      border-color: $color_error;
+    }
+
+    &.success {
+      border-color: $color_success;
+    }
+
+    input {
+      // display: block;
+      height: 100%;
+      width: 100%;
+      padding-left: 5px;
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 16px;
+        color: #aaa;
+      }
+    }
+  }
+
+  &__select {
+    margin-top: 15px;
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #aaa;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: 10px;
+      height: 9px;
+      // background: red;
+      // background: url("assets/arrow.svg");
+      background-repeat: no-repeat;
+      background-image: url('data:image/svg+xml,\
+        <svg \
+          width="10" \
+          height="10" \
+          viewBox="0 0 10 10" \
+          fill="none"\
+          xmlns="http://www.w3.org/2000/svg" \
+        > \
+          <path \
+            d="M10 0.5H0L5 9.5L10 0.5Z" \
+            fill="%23AAAAAA" \
+          /> \
+        </svg> \
+      ');
+    }
+
+    span {
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    select {
+      height: 26px;
+      width: 100%;
+      appearance: none;
+      position: relative;
+      z-index: 1;
+      padding-left: 5px;
+      font-size: 16px;
+    }
+
+    &.success {
+      border-color: $color_success;
+    }
+  }
+
+  &__policy {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    // border: 1px dashed blue;
+
+    a {
+      margin-left: 10px;
+      text-decoration: underline;
+    }
+  }
+
+  &__btn {
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 30px;
+    transition: all 0.3s;
+
+    &:disabled {
+      color: #aaa;
+      opacity: 0.8;
+      cursor: auto;
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background: #fff;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
+}
