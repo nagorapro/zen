@@ -1,9 +1,8 @@
 import List from './components/List'
 
-const Column = ({
-  parentClassName,
-  data
-}) => {
+const Column = ({parentClassName, data}) => {
+
+  if (!Object.keys(data).length) return null
 
   const {title, links} = data
 

@@ -1,3 +1,14 @@
+export const showProgress = (progresRef) => {
+  const progress = progresRef.current
+  const clientRect = document.body.getBoundingClientRect()
+  const clientPassed = Math.abs(clientRect.top)
+  const clientHeight = document.body.clientHeight
+  const screenHeight = window.screen.height
+  const clientNotPassed = clientHeight - screenHeight
+  const percent = Math.floor(clientPassed / clientNotPassed * 100)
+  progress.style.width = `${percent}%`
+}
+
 export const scrollToTop = () => {
   const clientTopPosition = window.pageYOffset
   let currentTopPosition = clientTopPosition

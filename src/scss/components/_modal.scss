@@ -30,7 +30,7 @@
     bottom: -100%;
     z-index: 1;
     width: 90%;
-    padding: 30px 25px;
+    padding: 20px 15px;
     background: #fff;
     border: 1px solid #aaa;
     border-radius: 5px;
@@ -40,6 +40,7 @@
 
     @media (min-width: $breakpoint_md) {
       width: 400px;
+      padding: 30px 25px;
     }
   }
 
@@ -50,9 +51,13 @@
   }
 
   &__title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     color: #000;
+
+    @media (min-width: $breakpoint_md) {
+      font-size: 20px;
+    }
   }
 
   &__form {
@@ -79,7 +84,7 @@
     }
 
     input {
-      // display: block;
+      display: block;
       height: 100%;
       width: 100%;
       padding-left: 5px;
@@ -107,8 +112,6 @@
       display: block;
       width: 10px;
       height: 9px;
-      // background: red;
-      // background: url("assets/arrow.svg");
       background-repeat: no-repeat;
       background-image: url('data:image/svg+xml,\
         <svg \
@@ -154,11 +157,14 @@
     margin-top: 15px;
     display: flex;
     align-items: center;
-    // border: 1px dashed blue;
 
     a {
-      margin-left: 10px;
+      margin-left: 5px;
       text-decoration: underline;
+
+      @media (min-width: $breakpoint_md) {
+        margin-left: 10px;
+      }
     }
   }
 

@@ -1,9 +1,6 @@
 import Item from './components/Item'
 
-const List = ({
-  parentClassName,
-  list
-}) => {
+const List = ({parentClassName, list}) => {
 
   return (
     <ul className={`${parentClassName}__list`}>

@@ -1,7 +1,8 @@
 import {useRef, useEffect} from 'react'
+import {showProgress} from '../../utils/helpers'
 
 const Progress = () => {
-  
+
   const progressRef = useRef(null)
 
   useEffect(() => {
@@ -10,13 +11,7 @@ const Progress = () => {
   }, [])
 
   const handleWindowScroll = () => {
-    const clientRect = document.body.getBoundingClientRect()
-    const clientPassed = Math.abs(clientRect.top)
-    const clientHeight = document.body.clientHeight
-    const screenHeight = window.screen.height
-    const clientNotPassed = clientHeight - screenHeight
-    const percent = Math.floor(clientPassed / clientNotPassed * 100)
-    progressRef.current.style.width = `${percent}%`
+    showProgress(progressRef)
   }
 
   return (

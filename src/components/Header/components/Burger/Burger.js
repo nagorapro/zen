@@ -1,16 +1,22 @@
+import clsx from 'clsx'
+
 const Burger = ({
   parentClassName,
   isBurgerActive,
   onBurgerClick
 }) => {
 
-  const className = isBurgerActive
-    ? `${parentClassName}__burger active`
-    : `${parentClassName}__burger`
+  const currentClassName = parentClassName
+    ? `${parentClassName}__burger`
+    : 'burger'
+
+  const classes = clsx(currentClassName, {
+    'active': isBurgerActive
+  })
 
   return (
     <button
-      className={className}
+      className={classes}
       onClick={onBurgerClick}
     >
       <span></span>

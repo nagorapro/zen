@@ -1,13 +1,6 @@
 import MenuItem from './components/MenuItem'
 import clsx from 'clsx'
 
-/*
-parentClassName={className}
-items={data.menuItems}
-theme={theme}
-isMenuActive={isBurgerActive}
-*/
-
 const Menu = ({
   parentClassName,
   items,

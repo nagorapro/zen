@@ -1,7 +1,4 @@
-const Item = ({
-  parentClassName,
-  item
-}) => {
+const Item = ({parentClassName, item}) => {
 
   const {url, content} = item
 
