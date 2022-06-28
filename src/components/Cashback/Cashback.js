@@ -1,5 +1,6 @@
 import {AppContext} from '../../context/AppContext'
-import {useContext} from 'react'
+import {useContext, useRef} from 'react'
+import useAnimateRef from '../../hooks/useAnimateRef'
 import Title from '../../common/Title'
 import Text from '../../common/Text'
 import clsx from 'clsx'
@@ -9,6 +10,10 @@ const Cashback = ({data}) => {
   const {theme, isModalActive, setIsModalActive} = useContext(AppContext)
 
   const {name, title, texts, buttonText} = data
+
+  const buttonBoxRef = useRef(null)
+
+  useAnimateRef(buttonBoxRef)
 
   const className = 'cashback'
 
@@ -40,20 +45,22 @@ const Cashback = ({data}) => {
 
           {texts?.length > 0 && texts.map((text) => (
             <Text
-              key={text}
               parentClassName={className}
+              key={text}
             >
               {text}
             </Text>
           ))}
 
-          <button
-            className={`${className}__btn ${buttonDarkClassName}`}
-            onClick={handleButtonClick}
-            disabled={isModalActive}
-          >
-            {buttonText ?? 'Order'}
-          </button>
+          <div ref={buttonBoxRef}>
+            <button
+              className={`${className}__btn ${buttonDarkClassName}`}
+              onClick={handleButtonClick}
+              disabled={isModalActive}
+            >
+              {buttonText ?? 'Order'}
+            </button>
+          </div>
         </div>
 
       </div>

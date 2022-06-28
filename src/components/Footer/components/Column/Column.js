@@ -1,3 +1,4 @@
+import Title from '../../../../common/Title'
 import List from './components/List'
 
 const Column = ({parentClassName, data}) => {
@@ -10,9 +11,15 @@ const Column = ({parentClassName, data}) => {
     <div className={`${parentClassName}__column`}>
 
       {title?.content && (
-        <h3 className={`${parentClassName}__title`}>
+        // <h3 className={`${parentClassName}__title`}>
+        //   {title.content}
+        // </h3>
+        <Title
+          parentClassName={parentClassName}
+          size={title.priority}
+        >
           {title.content}
-        </h3>
+        </Title>
       )}
 
       {links?.length > 0 && (

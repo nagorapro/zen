@@ -1,5 +1,6 @@
 import {AppContext} from '../../context/AppContext'
 import {useContext} from 'react'
+import Client from './components/Client'
 
 const Clients = ({data}) => {
 
@@ -20,12 +21,11 @@ const Clients = ({data}) => {
     >
       <div className={`${className}__wrapper`}>
 
-        {clients?.length > 0 && clients.map((client) => (
-          <img
-            className={`${className}__image`}
-            key={client.alternate}
-            src={client.source}
-            alt={client.alternate}
+        {clients?.length > 0 && clients.map((client, index) => (
+          <Client
+            key={index}
+            parentClassName={className}
+            client={client}
           />
         ))}
 

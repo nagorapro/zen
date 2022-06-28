@@ -1,11 +1,19 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
+import useAnimateRef from '../../../../hooks/useAnimateRef'
 import {ReactComponent as LogoIcon} from './assets/logo.svg'
+import Text from '../../../../common/Text/Text'
 import {scrollToTop} from '../../../../utils/helpers'
 
 const Info = ({parentClassName, data}) => {
 
   const {texts, developer} = data
   const [isLogoCliked, setIsLogoCliked] = useState(false)
+
+  const logoRef = useRef(null)
+  const developerRef = useRef(null)
+
+  useAnimateRef(logoRef)
+  useAnimateRef(developerRef)
 
   useEffect(() => {
     if (isLogoCliked) {
@@ -23,23 +31,25 @@ const Info = ({parentClassName, data}) => {
 
       <button
         className={`${parentClassName}__logo`}
+        ref={logoRef}
         onClick={handleLogoClick}
       >
         <LogoIcon />
       </button>
 
       {texts?.length > 0 && texts.map((text) => (
-        <p
-          className={`${parentClassName}__copy`}
+        <Text
+          parentClassName={parentClassName}
           key={text}
         >
           {text}
-        </p>
+        </Text>
       ))}
 
       {developer && (
         <a
           className={`${parentClassName}__developer`}
+          ref={developerRef}
           href={developer.url}
           title='nagoraproweb.ru'
         >
