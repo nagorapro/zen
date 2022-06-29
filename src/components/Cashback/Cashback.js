@@ -28,7 +28,7 @@ const Cashback = ({data}) => {
   return (
     <section
       className={className}
-      data-name={name}
+      id={name}
     >
       <div className={`${className}__wrapper`}>
 

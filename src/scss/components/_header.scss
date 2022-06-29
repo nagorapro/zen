@@ -133,15 +133,21 @@
       margin-left: 50px;
     }
 
-    button {
+    a {
+      display: block;
       width: 100%;
-      text-align: left;
       padding: 20px 15px;
+
+      @media (min-width: $breakpoint_md) {
+        text-align: center;
+      }
 
       @media (min-width: $breakpoint_lg) {
         position: relative;
         padding: 3px 0;
         overflow-x: hidden;
+        text-align: left;
+        cursor: pointer;
 
         &::after {
           content: "";

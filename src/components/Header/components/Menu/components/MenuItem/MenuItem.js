@@ -6,12 +6,12 @@ const MenuItem = ({
 
   return (
     <li className={`${parentClassName}__item`}>
-      <button
-        data-target={item.target}
+      <a
+        href={`#${item.target}`}
         onClick={onMenuItemClick}
       >
         {item.text}
-      </button>
+      </a>
     </li>
   )
 }

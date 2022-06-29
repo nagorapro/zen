@@ -10,7 +10,7 @@ const Footer = ({data}) => {
   return (
     <footer
       className={className}
-      data-name={name}
+      id={name}
     >
       <div className={`${className}__wrapper`}>
 

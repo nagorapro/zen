@@ -18,7 +18,7 @@ export const scrollToTop = () => {
     if (currentTopPosition > 0) {
       window.scrollTo(0, currentTopPosition)
       currentTopPosition -= 100
-      timerID = setTimeout(scroll, 20)
+      timerID = setTimeout(scroll, 40)
     } else {
       window.scrollTo(0, 0)
       clearTimeout(timerID)
@@ -28,9 +28,10 @@ export const scrollToTop = () => {
   scroll(timerID)
 }
 
-export const scrollToSection = (sectionName) => {
-  const $header = document.querySelector('[data-name="header"]')
-  const $section = document.querySelector(`[data-name="${sectionName}"]`)
+export const scrollToSection = (sectionTargetHash) => {
+
+  const $header = document.querySelector('#header')
+  const $section = document.querySelector(`${sectionTargetHash}`)
 
   const headerHeight = $header.getBoundingClientRect().height
   const sectionTopPosition = $section.getBoundingClientRect().top
@@ -43,8 +44,8 @@ export const scrollToSection = (sectionName) => {
   const scrollToBottom = () => {
     if (currentTopPosition < targetTopPosition) {
       window.scrollTo(0, currentTopPosition)
-      currentTopPosition += 50
-      timerID = setTimeout(scrollToBottom, 10)
+      currentTopPosition += 100
+      timerID = setTimeout(scrollToBottom, 40)
     } else {
       window.scrollTo(0, targetTopPosition)
       clearTimeout(timerID)
@@ -54,8 +55,8 @@ export const scrollToSection = (sectionName) => {
   const scrollToTop = () => {
     if (currentTopPosition > targetTopPosition) {
       window.scrollTo(0, currentTopPosition)
-      currentTopPosition -= 50
-      timerID = setTimeout(scrollToTop, 10)
+      currentTopPosition -= 100
+      timerID = setTimeout(scrollToTop, 40)
     } else {
       window.scrollTo(0, targetTopPosition)
       clearTimeout(timerID)

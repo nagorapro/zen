@@ -14,7 +14,7 @@ const Header = ({data}) => {
   const {theme, toggleTheme, lang, setLang} = useContext(AppContext)
   const [isBurgerActive, setIsBurgerActive] = useState(false)
   const [isLogoCliked, setIsLogoCliked] = useState(false)
-  const [scrollTargetName, setScrollTargetName] = useState('')
+  const [scrollTargetHash, setScrollTargetHash] = useState('')
 
   const className = 'header'
 
@@ -30,11 +30,11 @@ const Header = ({data}) => {
   }, [isLogoCliked])
 
   useEffect(() => {
-    if (scrollTargetName) {
-      scrollToSection(scrollTargetName)
-      setScrollTargetName('')
+    if (scrollTargetHash) {
+      scrollToSection(scrollTargetHash)
+      setScrollTargetHash('')
     }
-  }, [scrollTargetName])
+  }, [scrollTargetHash])
 
   const handleLogoClick = () => {
     setIsBurgerActive(false)
@@ -42,7 +42,8 @@ const Header = ({data}) => {
   }
 
   const handleMenuItemClick = (event) => {
-    setScrollTargetName(event.target.dataset.target)
+    event.preventDefault()
+    setScrollTargetHash(event.target.hash)
     setIsBurgerActive(false)
   }
 
@@ -57,7 +58,7 @@ const Header = ({data}) => {
   return (
     <header
       className={`${className} ${darkClassName}`}
-      data-name={name}
+      id={name}
     >
       <div className={`${className}__wrapper`}>
         <nav className={`${className}__nav`}>
