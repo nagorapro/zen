@@ -11,15 +11,22 @@ import {scrollToTop, scrollToSection} from '../../utils/helpers'
 const Header = ({data}) => {
 
   const {name, menuItems} = data
-  const {theme, toggleTheme, lang, setLang} = useContext(AppContext)
-  const [isBurgerActive, setIsBurgerActive] = useState(false)
+  const {
+    theme, toggleTheme,
+    lang, setLang,
+    isBurgerActive,
+    setIsBurgerActive,
+    previewDetails
+  } = useContext(AppContext)
+
   const [isLogoCliked, setIsLogoCliked] = useState(false)
   const [scrollTargetHash, setScrollTargetHash] = useState('')
 
   const className = 'header'
 
-  const darkClassName = clsx({
-    'dark': theme === 'dark'
+  const classNames = clsx(className, {
+    'dark': theme === 'dark',
+    'hidden': previewDetails !== null && previewDetails?.top < 100
   })
 
   useEffect(() => {
@@ -57,7 +64,7 @@ const Header = ({data}) => {
 
   return (
     <header
-      className={`${className} ${darkClassName}`}
+      className={classNames}
       id={name}
     >
       <div className={`${className}__wrapper`}>

@@ -1,4 +1,5 @@
 import Title from '../../common/Title'
+import Preview from '../../common/Preview/Preview'
 import {ReactComponent as AppleIcon} from './assets/apple.svg'
 import {ReactComponent as GoogleIcon} from './assets/google.svg'
 
@@ -52,14 +53,7 @@ const Download = ({data}) => {
           </div>
         </div>
 
-        <div className={`${className}__image`}>
-          {image && (
-            <img
-              src={image.source}
-              alt={image.alternate}
-            />
-          )}
-        </div>
+        {image && <Preview image={image} />}
 
       </div>
     </section>

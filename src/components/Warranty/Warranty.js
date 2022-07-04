@@ -1,5 +1,6 @@
 import Title from '../../common/Title'
 import Text from '../../common/Text'
+import Preview from '../../common/Preview'
 
 const Warranty = ({data}) => {
 
@@ -35,14 +36,7 @@ const Warranty = ({data}) => {
           ))}
         </div>
 
-        <div className={`${className}__image`}>
-          {image && (
-            <img
-              src={image.source}
-              alt={image.alternate}
-            />
-          )}
-        </div>
+        {image && <Preview image={image} />}
 
       </div>
     </section>

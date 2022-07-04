@@ -132,48 +132,4 @@
       width: auto;
     }
   }
-
-  &__image {
-    margin-top: 30px;
-    // height: 230px;
-    min-height: 40vw;
-    border: 1px solid currentColor;
-    border-radius: 20px;
-    overflow: hidden;
-
-    @media (orientation: landscape) and (max-width: $breakpoint_md) {
-      height: auto;
-    }
-
-    @media (min-width: $breakpoint_md) {
-      margin-top: 0;
-      height: 280px;
-      min-height: auto;
-    }
-
-    @media (min-width: $breakpoint_lg) {
-      height: 350px;
-    }
-
-    @media (min-width: $breakpoint_xl) {
-      height: 400px;
-    }
-
-    img {
-      display: block;
-      transition: transform 0.7s;
-
-      @media (min-width: $breakpoint_md) {
-        height: 100%;
-      }
-
-      @media (min-width: $breakpoint_lg) {
-        cursor: pointer;
-
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
 }

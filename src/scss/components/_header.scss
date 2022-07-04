@@ -4,21 +4,31 @@
   left: 0;
   right: 0;
   z-index: 1;
+  height: $heigth_header_xs;
   color: #000;
   background: #fff;
   transition: all 0.5s;
-  border-bottom: 2px solid #aaa;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $breakpoint_lg) {
+    height: $heigth_header_lg;
+  }
 
   &::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: $heigth_header_xs;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: -1;
-    background: inherit;
+    z-index: 1;
+    height: 1px;
+    background: currentColor;
+
+    @media (min-width: $breakpoint_lg) {
+      top: $heigth_header_lg;
+      height: 2px;
+    }
   }
 
   &.dark {
@@ -26,15 +36,26 @@
     background: #333;
   }
 
+  &.hidden {
+    transition: all 0.6s;
+    top: -100%;
+    opacity: 0;
+  }
+
   &__wrapper {
+    width: 100%;
     height: $heigth_header_xs;
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    margin: 0 auto;
+    // padding: 0 15px;
+    // margin: 0 auto;
+    background: inherit;
+    position: relative;
+    z-index: 0;
 
     @media (min-width: $breakpoint_md) {
       max-width: $max_width_md;
+      margin: 0 auto;
       padding: 10px 0;
     }
 
@@ -52,15 +73,32 @@
     height: 100%;
     display: flex;
     align-items: center;
+    background: inherit;
+    position: relative;
+    padding-left: 15px;
 
     @media (min-width: $breakpoint_lg) {
       width: 100%;
+      background: transparent;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100vw;
+      height: $heigth_header_xs;
+      background: inherit;
     }
   }
 
   &__logo {
     display: block;
     height: 30px;
+    position: relative;
+    z-index: 1;
     transition: opacity 0.5s;
 
     @media (min-width: $breakpoint_lg) {
@@ -79,17 +117,15 @@
 
   &__menu {
     position: fixed;
-    top: $heigth_header_xs + 2;
+    top: -100%;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: -2;
+    // z-index: -2;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     color: #000;
     background: #fff;
-    transform: translateY(-150%);
     transition: all 0.5s;
 
     &::-webkit-scrollbar {
@@ -97,16 +133,22 @@
     }
 
     @media (min-width: $breakpoint_lg) {
-      position: static;
-      z-index: 0;
-      transform: translateY(0);
+      position: relative;
+      z-index: 1;
+      top: 0;
+      // height: $heigth_header_lg;
       margin-left: auto;
       flex-direction: row;
       overflow-y: visible;
     }
 
     &.active {
-      transform: translateY(0);
+      height: 100vh;
+      top: $heigth_header_xs;
+
+      @media (min-width: $breakpoint_md) {
+        height: auto;
+      }
     }
 
     &.dark {
@@ -195,7 +237,6 @@
       padding: 0 6px;
       font-size: 16px;
       color: currentColor;
-      appearance: none;
       cursor: pointer;
     }
 
@@ -211,6 +252,8 @@
     height: 30px;
     fill: currentColor;
     transition: opacity 0.5s;
+    position: relative;
+    z-index: 0;
 
     @media (min-width: $breakpoint_lg) {
       margin-left: 40px;
@@ -231,6 +274,7 @@
 
   &__burger {
     margin-left: 20px;
+    margin-right: 15px;
     height: 20px;
     width: 30px;
     position: relative;

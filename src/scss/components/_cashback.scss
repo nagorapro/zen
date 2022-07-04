@@ -82,11 +82,15 @@
     width: 100%;
     min-height: 50px;
     font-size: 16px;
-    border: 1px solid currentColor;
+    border: 1px solid #333;
     border-radius: 30px;
     transition: all 0.3s;
+    position: relative;
+    overflow-x: hidden;
 
     &.dark {
+      border-color: #fff;
+
       @media (min-width: $breakpoint_lg) {
         &::after {
           background: #fff;
@@ -107,31 +111,24 @@
     }
 
     @media (min-width: $breakpoint_lg) {
-      position: relative;
-      overflow-x: hidden;
-
       &::after {
         content: '';
-        display: block;
+        width: 100%;
+        height: 100%;
         background: #333;
         border-radius: 30px;
         position: absolute;
-        left: 0;
         top: 0;
-        right: 0;
-        bottom: 0;
+        left: -100%;
         z-index: -1;
-        opacity: 0.1;
-        transform: translateX(-110%);
-        transition: all 0.5s;
+        transition: left 0.5s;
       }
 
       &:hover {
         color: #fff;
 
         &::after {
-          opacity: 1;
-          transform: translateX(0);
+          left: 0;
         }
       }
     }
