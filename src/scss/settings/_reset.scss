@@ -39,11 +39,18 @@ img {
   width: 100%;
 }
 
-input, select {
+input,
+select {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   background: none;
   border: none;
   outline: none;
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }

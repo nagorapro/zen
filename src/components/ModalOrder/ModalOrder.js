@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import {ReactComponent as CloseIcon} from './assets/close.svg'
 import Form from './components/Form'
 
-const Modal = ({data}) => {
+const ModalOrder = ({data}) => {
 
   const {
     lang,
@@ -18,7 +18,7 @@ const Modal = ({data}) => {
 
   const {title, form} = data
 
-  const className = 'modal'
+  const className = 'modal-order'
 
   const activeClassName = clsx({
     'active': isModalActive
@@ -79,4 +79,4 @@ const Modal = ({data}) => {
   )
 }
 
-export default Modal
+export default ModalOrder

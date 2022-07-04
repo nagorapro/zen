@@ -12,7 +12,8 @@ import Care from './components/Care'
 import Cashback from './components/Cashback'
 import Clients from './components/Clients'
 import Footer from './components/Footer'
-import Modal from './components/Modal/Modal'
+import ModalOrder from './components/ModalOrder'
+import ModalImage from './components/ModalImage'
 
 const App = () => {
   const {lang} = useContext(AppContext)
@@ -58,7 +59,9 @@ const App = () => {
 
       {data?.footer && <Footer data={data.footer} />}
 
-      {data?.modal && <Modal data={data.modal} />}
+      {data?.modal && <ModalOrder data={data.modal} />}
+
+      {!isLoading && <ModalImage/>}
     </>
   )
 }

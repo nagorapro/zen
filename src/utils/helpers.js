@@ -73,6 +73,7 @@ export const scrollToSection = (sectionTargetHash) => {
 }
 
 export const showAnimateRef = (ref) => {
+
   const element = ref.current
   const screenHeight = window.screen.height
   const elementTopPosition = element.getBoundingClientRect().top
@@ -84,6 +85,35 @@ export const showAnimateRef = (ref) => {
     element.classList.remove('on')
     element.classList.add('off')
   }
+}
+
+export const showAnimateDescription = (descriptionRef, descriptionText, delay) => {
+
+  descriptionRef.current.classList.add('cursor-blink')
+
+  let index = 0
+  let string = ''
+  let timerID
+
+  const addSymbolToSting = () => {
+    if (!descriptionRef.current) return
+
+    descriptionRef.current.classList.remove('cursor-blink')
+    descriptionRef.current.classList.add('cursor')
+
+    if (string.length < descriptionText.length) {
+      string += descriptionText[index]
+      index += 1
+      descriptionRef.current.textContent = string
+      timerID = setTimeout(addSymbolToSting, 150)
+    } else {
+      descriptionRef.current.classList.remove('cursor')
+      descriptionRef.current.classList.add('cursor-blink')
+      clearTimeout(timerID)
+    }
+  }
+
+  setTimeout(() => addSymbolToSting(), delay ?? 0)
 }
 
 export const validateName = (name) => {

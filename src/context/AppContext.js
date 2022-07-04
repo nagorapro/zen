@@ -12,6 +12,10 @@ const AppProvider = ({children}) => {
     return localStorage.getItem('theme') ?? 'light'
   })
 
+  const [isBurgerActive, setIsBurgerActive] = useState(false)
+
+  const [previewDetails, setPreviewDetails] = useState(null)
+
   const [isModalActive, setIsModalActive] = useState(false)
 
   const [isSuccessSubmit, setIsSuccessSubmit] = useState(false)
@@ -32,10 +36,11 @@ const AppProvider = ({children}) => {
   }, [lang])
 
   useEffect(() => {
-    isModalActive
+    isBurgerActive || isModalActive || previewDetails
       ? document.body.classList.add('hidden')
       : document.body.classList.remove('hidden')
-  }, [isModalActive])
+
+  }, [isBurgerActive, isModalActive, previewDetails])
 
   const toggleTheme = () => {
     theme === 'light'
@@ -46,6 +51,8 @@ const AppProvider = ({children}) => {
   const value = {
     lang, setLang,
     theme, toggleTheme,
+    isBurgerActive, setIsBurgerActive,
+    previewDetails, setPreviewDetails,
     isModalActive, setIsModalActive,
     isSuccessSubmit, setIsSuccessSubmit,
     isFormReset, setIsFormReset
