@@ -8,7 +8,7 @@
   overflow: hidden;
 
   animation-name: dark-in;
-  animation-delay: 0.5s;
+  animation-delay: 1s;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
@@ -23,7 +23,6 @@
   &.dark-out {
     background: rgba(0, 0, 0, 0.95);
     animation-name: dark-out;
-    animation-delay: 0;
 
     @keyframes dark-out {
       100% {

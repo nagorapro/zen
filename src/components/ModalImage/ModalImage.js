@@ -12,10 +12,10 @@ const ModalImage = () => {
   const [isImageBoxBackward, setIsImageBoxBackward] = useState(false)
   const [isDescriptionHidden, setIsDescriptionHidden] = useState(true)
   const {previewDetails, setPreviewDetails} = useContext(AppContext)
-
+  
   const className = 'modal-image'
   const darkOutClassName = clsx({'dark-out': isImageBoxBackward})
-  const hiddenClassNames = clsx({'hidden': isDescriptionHidden})
+  const hiddenClassName = clsx({'hidden': isDescriptionHidden})
 
   useEffect(() => {
     if (!previewDetails) return
@@ -68,7 +68,7 @@ const ModalImage = () => {
     <div className={`${className} ${darkOutClassName}`}>
 
       <p
-        className={`${className}__description ${hiddenClassNames}`}
+        className={`${className}__description ${hiddenClassName}`}
         ref={descriptionRef}
       ></p>
 
