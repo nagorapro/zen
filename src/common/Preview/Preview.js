@@ -1,25 +1,28 @@
-import {useContext, useRef} from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useContext, useRef, useEffect} from 'react'
 import {AppContext} from '../../context/AppContext'
 import useAnimateRef from '../../hooks/useAnimateRef'
 
 const Preview = ({image}) => {
 
-  const {setPreviewDetails} = useContext(AppContext)
+  const {setPreviewDetails, setSlides} = useContext(AppContext)
   const previewRef = useRef(null)
 
   useAnimateRef(previewRef)
 
+  useEffect(() => {
+    setSlides((prevSlides) => [...prevSlides, image])
+  }, [image])
+
   const handlePreviewClick = (event) => {
 
-    const {src, alt} = event.currentTarget.children[0]
-
-    const clientRect = event.currentTarget.getBoundingClientRect()
-
-    const {top, left, width, height} = clientRect
+    const {src: source, alt: alternate, dataset} = event.currentTarget.children[0]
+    const {top, left, width, height} = event.currentTarget.getBoundingClientRect()
 
     const previewDetails = {
-      src,
-      alt,
+      id: Number.parseInt(dataset.imageId, 10),
+      source,
+      alternate,
       top,
       left,
       width,
@@ -37,6 +40,7 @@ const Preview = ({image}) => {
       onClick={handlePreviewClick}
     >
       <img
+        data-image-id={image.id}
         src={image.source}
         alt={image.alternate}
       />

@@ -12,9 +12,13 @@ const AppProvider = ({children}) => {
     return localStorage.getItem('theme') ?? 'light'
   })
 
-  const [isBurgerActive, setIsBurgerActive] = useState(false)
+  const [slides, setSlides] = useState([])
+
+  const [slideDescription, setSlideDescription] = useState(null)
 
   const [previewDetails, setPreviewDetails] = useState(null)
+
+  const [isBurgerActive, setIsBurgerActive] = useState(false)
 
   const [isModalActive, setIsModalActive] = useState(false)
 
@@ -51,8 +55,10 @@ const AppProvider = ({children}) => {
   const value = {
     lang, setLang,
     theme, toggleTheme,
-    isBurgerActive, setIsBurgerActive,
+    slides, setSlides,
+    slideDescription, setSlideDescription,
     previewDetails, setPreviewDetails,
+    isBurgerActive, setIsBurgerActive,
     isModalActive, setIsModalActive,
     isSuccessSubmit, setIsSuccessSubmit,
     isFormReset, setIsFormReset
