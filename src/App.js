@@ -13,19 +13,23 @@ import Cashback from './components/Cashback'
 import Clients from './components/Clients'
 import Footer from './components/Footer'
 import ModalOrder from './components/ModalOrder'
-import ModalImage from './components/ModalImage'
+import ModalSlider from './components/ModalSlider'
 
 const App = () => {
-  const {lang} = useContext(AppContext)
+  const {lang, setSlides} = useContext(AppContext)
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState(null)
+  const [windowWidth, setWindowWidth] = useState(() => window.innerWidth)
   const {getData} = useFetch(API_BASE_URL)
 
   useEffect(() => {
     document.body.translate = false
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
   useEffect(() => {
+    setSlides([])
     getData(`${lang}.json`).then(
       (data) => setData(data),
       (error) => console.error({error})
@@ -38,6 +42,13 @@ const App = () => {
       return () => clearTimeout(timerID)
     }
   }, [data])
+
+  const handleWindowResize = (event) => {
+    if (windowWidth !== event.target.innerWidth) {
+      window.location.reload()
+      setWindowWidth(event.target.innerWidth)
+    }
+  }
 
   return (
     <>
@@ -61,7 +72,7 @@ const App = () => {
 
       {data?.modal && <ModalOrder data={data.modal} />}
 
-      {!isLoading && <ModalImage/>}
+      {!isLoading && <ModalSlider />}
     </>
   )
 }

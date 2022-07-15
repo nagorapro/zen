@@ -7,61 +7,33 @@ const Title = ({parentClassName, size, children}) => {
 
   useAnimateRef(titleRef)
 
-  const className = `${parentClassName}__title`
+  if (!children) return null
+
+  const className = parentClassName ? `${parentClassName}__title` : 'title'
 
   switch (size) {
     case 6: return (
-      <h6
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h6>
+      <h6 className={className} ref={titleRef}>{children}</h6>
     )
 
     case 5: return (
-      <h5
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h5>
+      <h5 className={className} ref={titleRef}>{children}</h5>
     )
 
     case 4: return (
-      <h4
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h4>
+      <h4 className={className} ref={titleRef}>{children}</h4>
     )
 
     case 3: return (
-      <h3
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h3>
+      <h3 className={className} ref={titleRef}>{children}</h3>
     )
 
     case 2: return (
-      <h2
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h2>
+      <h2 className={className} ref={titleRef}>{children}</h2>
     )
 
     default: return (
-      <h3
-        className={className}
-        ref={titleRef}
-      >
-        {children}
-      </h3>
+      <h1 className={className} ref={titleRef}>{children}</h1>
     )
   }
 }

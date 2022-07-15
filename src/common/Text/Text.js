@@ -7,13 +7,12 @@ const Text = ({parentClassName, children}) => {
 
   useAnimateRef(textRef)
 
+  if (!children) return null
+
+  const className = parentClassName ? `${parentClassName}__copy` : 'copy'
+
   return (
-    <p
-      className={`${parentClassName}__copy`}
-      ref={textRef}
-    >
-      {children}
-    </p>
+    <p className={className} ref={textRef}>{children}</p>
   )
 }
 

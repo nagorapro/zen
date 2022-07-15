@@ -17,8 +17,8 @@ export const scrollToTop = () => {
   const scroll = () => {
     if (currentTopPosition > 0) {
       window.scrollTo(0, currentTopPosition)
-      currentTopPosition -= 100
-      timerID = setTimeout(scroll, 40)
+      currentTopPosition -= 80
+      timerID = setTimeout(scroll, 30)
     } else {
       window.scrollTo(0, 0)
       clearTimeout(timerID)
@@ -29,7 +29,6 @@ export const scrollToTop = () => {
 }
 
 export const scrollToSection = (sectionTargetHash) => {
-
   const $header = document.querySelector('#header')
   const $section = document.querySelector(`${sectionTargetHash}`)
 
@@ -44,8 +43,8 @@ export const scrollToSection = (sectionTargetHash) => {
   const scrollToBottom = () => {
     if (currentTopPosition < targetTopPosition) {
       window.scrollTo(0, currentTopPosition)
-      currentTopPosition += 100
-      timerID = setTimeout(scrollToBottom, 40)
+      currentTopPosition += 80
+      timerID = setTimeout(scrollToBottom, 30)
     } else {
       window.scrollTo(0, targetTopPosition)
       clearTimeout(timerID)
@@ -55,8 +54,8 @@ export const scrollToSection = (sectionTargetHash) => {
   const scrollToTop = () => {
     if (currentTopPosition > targetTopPosition) {
       window.scrollTo(0, currentTopPosition)
-      currentTopPosition -= 100
-      timerID = setTimeout(scrollToTop, 40)
+      currentTopPosition -= 80
+      timerID = setTimeout(scrollToTop, 30)
     } else {
       window.scrollTo(0, targetTopPosition)
       clearTimeout(timerID)
@@ -73,6 +72,7 @@ export const scrollToSection = (sectionTargetHash) => {
 }
 
 export const showAnimateRef = (ref) => {
+  if (!ref.current) return
 
   const element = ref.current
   const screenHeight = window.screen.height
@@ -85,35 +85,6 @@ export const showAnimateRef = (ref) => {
     element.classList.remove('on')
     element.classList.add('off')
   }
-}
-
-export const showAnimateDescription = (descriptionRef, descriptionText, delay) => {
-
-  descriptionRef.current.classList.add('cursor-blink')
-
-  let index = 0
-  let string = ''
-  let timerID
-
-  const addSymbolToSting = () => {
-    if (!descriptionRef.current) return
-
-    descriptionRef.current.classList.remove('cursor-blink')
-    descriptionRef.current.classList.add('cursor')
-
-    if (string.length < descriptionText.length) {
-      string += descriptionText[index]
-      index += 1
-      descriptionRef.current.textContent = string
-      timerID = setTimeout(addSymbolToSting, 150)
-    } else {
-      descriptionRef.current.classList.remove('cursor')
-      descriptionRef.current.classList.add('cursor-blink')
-      clearTimeout(timerID)
-    }
-  }
-
-  setTimeout(() => addSymbolToSting(), delay ?? 0)
 }
 
 export const validateName = (name) => {
