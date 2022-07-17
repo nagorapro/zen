@@ -14,7 +14,7 @@ const AppProvider = ({children}) => {
 
   const [slides, setSlides] = useState([])
 
-  const [slideDescription, setSlideDescription] = useState(null)
+  const [slideDescription, setSlideDescription] = useState('')
 
   const [previewDetails, setPreviewDetails] = useState(null)
 

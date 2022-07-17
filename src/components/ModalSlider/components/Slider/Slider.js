@@ -18,11 +18,30 @@ const Slider = forwardRef(({
   const slidesRef = useRef(null)
 
   const [activeSlideID, setActiveSlideID] = useState(currentSlideID)
+
+  const [touchStartХ, setTouchStartХ] = useState(null)
+  const [touchEndХ, setTouchEndХ] = useState(null)
+
   const [isControlsHidden, setIsControlsHidden] = useState(false)
 
   const className = 'slider'
   const hiddenClassName = clsx({'hidden': isControlsHidden})
 
+  useEffect(() => {
+    if (!touchStartХ || !touchEndХ) return
+
+    if (touchStartХ > touchEndХ) {
+      setActiveSlideID((prevID) => prevID < slides.length ? prevID + 1 : prevID)
+    }
+
+    if (touchStartХ < touchEndХ) {
+      setActiveSlideID((prevID) => prevID > 1 ? prevID - 1 : prevID)
+    }
+
+    setTouchStartХ(null)
+    setTouchEndХ(null)
+
+  }, [touchStartХ, touchEndХ])
 
   useEffect(() => {
     if (!isSliderBackward) {
@@ -37,6 +56,16 @@ const Slider = forwardRef(({
     }
   }, [isSliderBackward])
 
+  const handleSliderTouchStart = (event) => {
+    const startX = Math.floor(event.changedTouches[0].clientX)
+    setTouchStartХ(startX)
+  }
+
+  const handleSliderTouchEnd = (event) => {
+    const endX = Math.floor(event.changedTouches[0].clientX)
+    setTouchEndХ(endX)
+  }
+
   const handlePrevClick = () => {
     setActiveSlideID((prevID) => prevID - 1)
   }
@@ -49,6 +78,8 @@ const Slider = forwardRef(({
     <div
       className={className}
       ref={ref}
+      onTouchStart={handleSliderTouchStart}
+      onTouchEnd={handleSliderTouchEnd}
     >
       <button
         className={`${className}__close`}
